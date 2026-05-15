@@ -1,0 +1,82 @@
+# ========================
+# Core API Framework
+# ========================
+fastapi[standard]       # FastAPI with all standard extras (includes uvicorn)
+uvicorn[standard]       # ASGI server to run FastAPI — the thing that starts your server
+pydantic[email]         # Data validation — v2 installed by default now
+pydantic-settings       # For reading .env files into Python settings/config
+
+# ========================
+# Database
+# ========================
+asyncpg                  # Async Postgres driver
+sqlalchemy[asyncio]     # ORM for defining and managing DB tables
+
+# ========================
+# HTTP Client
+# ========================
+httpx                   # Async HTTP client — used to download product images
+
+# ========================
+# Object Storage (MinIO / S3)
+# ========================
+boto3                   # AWS SDK — works with MinIO locally, real S3 in production
+
+# ========================
+# Caching
+# ========================
+redis                   # Redis client for Python (includes async support)
+
+# ========================
+# Image Processing
+# ========================
+Pillow                  # Image open, resize, convert to WebP
+imagehash               # Perceptual hashing (pHash) for duplicate detection
+
+# ========================
+# ML / Embeddings (Phase 2)
+# ========================
+torch                   # PyTorch — base for all ML models
+torchvision             # Image transforms and utilities for torch
+open-clip-torch         # OpenCLIP — text+image cross-modal embeddings
+transformers            # HuggingFace — loads DINOv2 and BGE models
+sentence-transformers   # BGE text embeddings — cleaner API than raw transformers
+
+# ========================
+# Vector Database (Phase 2)
+# ========================
+qdrant-client           # Python client to talk to Qdrant vector DB
+
+# ========================
+# LLM Enrichment (Phase 4)
+# ========================
+google-generativeai     # Gemini Flash API
+instructor              # Forces LLM to return structured Pydantic output
+
+# ========================
+# Background Jobs (Phase 4)
+# ========================
+temporalio              # Temporal workflows — durable background job processing
+
+# ========================
+# Observability (Phase 5)
+# ========================
+prometheus-fastapi-instrumentator  # Auto-adds Prometheus metrics to FastAPI
+langfuse                # LLM cost and token tracking
+
+# ========================
+# Utilities
+# ========================
+python-multipart        # Required for file uploads (CSV bulk ingest) in FastAPI
+python-dotenv           # Load .env file for local development
+numpy                   # Array operations — used with embeddings
+pandas                  # Stats for pricing engine (median, p25, p75)
+faker                   # Generate fake product data for seeding
+
+# ========================
+# Dev / Testing only
+# ========================
+pytest                  # Test runner
+pytest-asyncio          # Async test support (needed since FastAPI is async)
+httpx                   # Also used as test client for FastAPI
+ruff                    # Fast Python linter and formatter
