@@ -100,6 +100,8 @@ class ProductResponse(BaseModel):
     tags: list[str]
     created_at: datetime
     updated_at: datetime
+    clip_embedded: bool = False
+    embedded_at: datetime | None = None
     
     model_config = {"from_attributes": True}
     

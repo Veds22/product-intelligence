@@ -1,8 +1,6 @@
-# app/models/orm.py
-
 from sqlalchemy import (
     Column, String, Text, Numeric, CHAR,
-    ARRAY, DateTime, func
+    ARRAY, DateTime, func, Boolean
 )
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase
@@ -126,4 +124,21 @@ class ProductORM(Base):
         # onupdate=func.now() means PostgreSQL updates this automatically
         # every time the row is modified — you never set it manually
         nullable=False
+    )
+    
+    clip_embedded = Column(
+    Boolean,
+    default=False,
+    nullable=False,
+    server_default="false"
+    # Tracks whether this product has been embedded and stored in Qdrant
+    # False = not yet embedded, True = vectors exist in Qdrant
+    # Used by the bulk backfill job in Phase 4 to find un-embedded products
+    )
+
+    embedded_at = Column(
+        DateTime(timezone=True),
+        nullable=True
+        # Timestamp of when embedding completed
+        # None until embedding runs
     )

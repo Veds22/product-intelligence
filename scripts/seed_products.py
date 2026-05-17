@@ -200,6 +200,7 @@ async def seed(count: int = 500, batch_size: int = 50):
             # Upload batch
             response = await client.post(
                 "/products/bulk",
+                params={"skip_images": True},
                 files={
                     "file": (
                         f"batch_{batch_num}.csv",

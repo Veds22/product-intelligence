@@ -30,9 +30,12 @@ app.include_router(
 @app.on_event("startup")
 async def startup():
     from app.services.image_pipeline import get_minio_client, ensure_bucket_exists
+    from app.services.embedder import load_models, setup_qdrant
     await connect()
     minio_client = get_minio_client()
     ensure_bucket_exists(minio_client)
+    load_models()
+    setup_qdrant() 
 
 # Ensure the stdlib logging is configured so module loggers print to console
 logging.basicConfig(level=logging.INFO)
